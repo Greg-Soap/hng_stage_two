@@ -1,31 +1,44 @@
+"use client";
+import { GetMovieDetails, GetMovieVideo } from "@/api/getMovies";
+import { convertToRuntime } from "@/utils/runtime";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React from "react";
 
-export default function MoviePage() {
+export default async function MoviePage() {
+  const router = useRouter();
+  let id = router.query.slug;
+  let movie = await GetMovieDetails(id);
+  let video = await GetMovieVideo(id);
   return (
     <section>
-      <div className="video"></div>
+      <div className="video">
+        <iframe
+          width="560"
+          height="315"
+          src={`https://www.youtube.com/embed/${video}`}
+          frameBorder="0"
+          allowFullScreen
+        ></iframe>
+      </div>
       <div className="left">
         <div className="info">
-          <h2>top gun maverick.</h2>
-          <span>2022</span>
+          <h2>{movie.title}</h2>
+          <span>{movie.release_date}</span>
           <span>PG-13</span>
-          <span>2h 10m</span>
-          <span>Actions Drama</span>
+          <span>{convertToRuntime(movie.runtime)}</span>
+          {movie.genres.map((genre: any) => (
+            <span key={genre.id}>{genre.name}</span>
+          ))}
         </div>
-        <div className="desc">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos
-          laborum mollitia amet blanditiis similique dolore excepturi aut
-          eligendi, explicabo veniam?
-        </div>
+        <div className="desc">{movie.overview}</div>
         <p>director:</p>
         <p>writers:</p>
         <p>stars:</p>
         <button>top rated movies #65</button>
-        <select name="" id=""></select>
       </div>
       <div className="right">
-        <span>star/350k</span>
+        <span>8.5/350k</span>
         <button>see showcase</button>
         <button>more watch options</button>
         <Image src="" alt="" />

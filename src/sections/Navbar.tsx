@@ -4,7 +4,7 @@ import logo from "../assets/tv.svg";
 import menu from "../assets/Menu.svg";
 export default function Navbar() {
   return (
-    <nav className="Navbar_Container">
+    <nav className="navbar_container">
       <div className="brand_logo">
         <Image width={50} height={50} src={logo} alt="Brand Logo" />
         <h1>MovieBox</h1>

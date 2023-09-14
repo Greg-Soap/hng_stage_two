@@ -1,0 +1,3 @@
+export const headers = {
+  Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiNjgxN2Q4NTU1MjkxOTFiZDg4YWE4YTYyYzk4MTM1ZCIsInN1YiI6IjY1MDAzYjdmNmEyMjI3MDBmZDIwMzJmMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._RFIh0t--SuZaS3AcYOb9HfMVz4PjbQAWkG4IssdNGw`,
+};

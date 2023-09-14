@@ -1,9 +1,11 @@
-import Image from "next/image";
 import React from "react";
 import style from "./card.module.css";
+import Image from "next/image";
+import Link from "next/link";
 
 interface CardProps {
   title: string;
+  id: string;
   image: string;
   year: string;
   country: string;
@@ -13,6 +15,7 @@ interface CardProps {
 }
 export default function Card({
   title,
+  id,
   image,
   year,
   country,
@@ -21,11 +24,17 @@ export default function Card({
 }: CardProps) {
   return (
     <article className={style.container}>
-      <Image src={image} alt={title} width={250} height={370} />
+      <img
+        src={`https://image.tmdb.org/t/p/original${image}`}
+        alt={title}
+        style={{ width: "250px", height: "370px" }}
+      />
       <p className={style.location}>
         {country} <span className={style.year}>{year}</span>
       </p>
-      <h2 className={style.title}>{title}</h2>
+      <Link href={`/${id}`} className={style.title}>
+        {title}
+      </Link>
       <div className={style.ratings}>
         <span>
           <Image src="" alt="iMDb" width={35} height={17} />
