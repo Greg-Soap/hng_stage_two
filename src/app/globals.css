@@ -201,7 +201,7 @@ html {
 .movies__container {
   display: flex;
   flex-wrap: wrap;
-  gap: 8rem;
+  gap: 6rem;
 }
 @media screen and (max-width: 460px) {
   .auth h1,

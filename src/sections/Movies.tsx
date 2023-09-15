@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { SearchContext } from "@/context/Search";
 import { GetGenres, GetMovies } from "@/api/getMovies";
 import arrow from "@/assets/Chevron right.svg";
+import Loading from "@/app/loading";
 
 export default function Movies() {
   const { search } = useContext(SearchContext);
@@ -42,23 +43,27 @@ export default function Movies() {
           See more <Image alt="arrow" src={arrow} width={20} height={20} />
         </span>
       </div>
-      <div className="movies__container">
-        {movies.map((data: any) => {
-          return (
-            <Card
-              id={data.id}
-              title={data.title || ""}
-              key={data.id || ""}
-              year={data.release_date || ""}
-              country={data.country || "USA"}
-              image={data.poster_path || ""}
-              genres={getGenreNames(data.genre_ids)}
-              imdb={data.vote_average || 0}
-              rottenTomatoes={data.popularity || ""}
-            />
-          );
-        })}
-      </div>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className="movies__container">
+          {movies.map((data: any) => {
+            return (
+              <Card
+                id={data.id}
+                title={data.title || ""}
+                key={data.id || ""}
+                year={data.release_date || ""}
+                country={data.country || "USA"}
+                image={data.poster_path || ""}
+                genres={getGenreNames(data.genre_ids)}
+                imdb={data.vote_average || 0}
+                rottenTomatoes={data.popularity || ""}
+              />
+            );
+          })}
+        </div>
+      )}
     </section>
   );
 }
