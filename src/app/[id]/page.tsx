@@ -28,20 +28,24 @@ export default async function MoviePage() {
         <div className={style.bottom}>
           <div className={style.left}>
             <div className={style.info}>
-              <h2>{movie.title}</h2>
+              <h2 data-testid="movie-title">{movie.title}</h2>
               <p>.</p>
-              <span>{movie.release_date}</span>
+              <span data-testid="movie-release-date">{movie.release_date}</span>
               <p>.</p>
               <span>PG-13</span>
               <p>.</p>
-              <span>{convertToRuntime(movie.runtime)}</span>
+              <span data-testid="movie-runtime">
+                {convertToRuntime(movie.runtime)}
+              </span>
               {movie.genres.map((genre: any) => (
                 <span className={style.genre} key={genre.id}>
                   {genre.name}
                 </span>
               ))}
             </div>
-            <div className={style.desc}>{movie.overview}</div>
+            <div className={style.desc} data-testid="movie-overview">
+              {movie.overview}
+            </div>
           </div>
           <div className={style.right}>
             <button>

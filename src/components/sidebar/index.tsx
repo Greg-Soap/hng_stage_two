@@ -26,7 +26,7 @@ export default function Sidebar() {
           return (
             <a href={link.slug} className={style.link} key={link.id}>
               <Image src={link.icon} alt={link.name} width={25} height={25} />
-              {link.name}
+              <span>{link.name}</span>
             </a>
           );
         })}
@@ -38,7 +38,7 @@ export default function Sidebar() {
       </div>
       <a href="/" className={style.logout}>
         <Image src={logout} alt="logout" width={25} height={25} />
-        Log Out
+        <span>Log Out</span>
       </a>
     </aside>
   );

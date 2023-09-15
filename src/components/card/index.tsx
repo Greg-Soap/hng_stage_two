@@ -26,16 +26,20 @@ export default function Card({
   rottenTomatoes,
 }: CardProps) {
   return (
-    <article className={style.container}>
+    <article className={style.container} data-testid="movie-card">
       <img
         src={`https://image.tmdb.org/t/p/original${image}`}
         alt={title}
         style={{ width: "250px", height: "370px" }}
+        data-testid="movie-poster"
       />
       <p className={style.location}>
-        {country}, <span className={style.year}>{year}</span>
+        {country},{" "}
+        <span className={style.year} data-testid="movie-release-date">
+          {year}
+        </span>
       </p>
-      <Link href={`/${id}`} className={style.title}>
+      <Link href={`/${id}`} className={style.title} data-testid="movie-title">
         {title}
       </Link>
       <div className={style.ratings}>

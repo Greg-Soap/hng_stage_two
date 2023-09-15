@@ -1,6 +1,7 @@
 .container {
   display: flex;
 }
+
 .details {
   padding: 2.5rem;
   display: flex;
@@ -34,6 +35,10 @@
   background: #be123c;
   color: white;
   text-transform: capitalize;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 .btn {
   border: 1px solid #be123c !important;
@@ -80,4 +85,18 @@
   font-weight: 400;
   line-height: normal;
   margin-top: 2rem;
+}
+@media screen and (max-width: 460px) {
+  .container {
+    flex-direction: column-reverse;
+  }
+  .bottom {
+    flex-direction: column;
+  }
+  .desc {
+    margin-bottom: 1rem;
+  }
+  .info {
+    flex-wrap: wrap;
+  }
 }
