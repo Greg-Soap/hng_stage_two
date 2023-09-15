@@ -46,6 +46,18 @@ export const GetMovieVideo = async (id?: string | string[]) => {
     const youtubeVideoId = firstTrailer.key;
     return youtubeVideoId;
   } else {
-    console.log("No trailer found for this movie.");
+    throw new Error("No trailer found for this movie.");
+  }
+};
+
+export const GetGenres = async () => {
+  try {
+    const url = "https://api.themoviedb.org/3/genre/movie/list";
+    const response = await fetch(url, { headers });
+    const data = await response.json();
+    return data.genres;
+  } catch (error) {
+    console.error("Error fetching genre data", error);
+    return [];
   }
 };
